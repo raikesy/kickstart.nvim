@@ -99,7 +99,7 @@ do
   vim.g.maplocalleader = ' '
 
   -- Set to true if you have a Nerd Font installed and selected in the terminal
-  vim.g.have_nerd_font = false
+  vim.g.have_nerd_font = true	-- Ghostty has built-in nerd font
 
   -- [[ Setting options ]]
   --  See `:help vim.o`
