@@ -847,8 +847,27 @@ do
     default_format_opts = {
       lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.
     },
+    formatters = {
+      viteplus = {
+        command = 'vp',
+        args = { 'fmt', '--stdin-filepath', '$FILENAME' },
+        stdin = true,
+        cwd = require('conform.util').root_file {
+          'vite.config.ts',
+          'package.json',
+        },
+        require_cwd = true,
+      },
+    },
     -- You can also specify external formatters in here.
     formatters_by_ft = {
+      javascript = { 'viteplus' },
+      typescript = { 'viteplus' },
+      html = { 'viteplus' },
+      vue = { 'viteplus' },
+      css = { 'viteplus' },
+      json = { 'viteplus' },
+      jsonc = { 'viteplus' },
       -- rust = { 'rustfmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
