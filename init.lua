@@ -733,15 +733,15 @@ do
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
   local servers = {
-    ts_ls = {
-      root_markers = { "package.json" },
+    tsc = {
+      root_markers = { 'package.json' },
       workspace_required = true,
       settings = {},
     },
-    denols = {
-      root_markers = { "deno.json", "deno.jsonc" },
-      settings = {},
-    },
+    oxlint = {},
+    html = {},
+    emmet_language_server = {},
+    cssls = {},
     -- clangd = {},
     -- gopls = {},
     -- pyright = {},
