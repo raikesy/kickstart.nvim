@@ -827,7 +827,11 @@ do
   --    :Mason
   --
   -- You can press `g?` for help in this menu.
-  local ensure_installed = vim.tbl_keys(servers or {})
+  -- JPR: oxlint lsp can use existing vite-plus executable but because Mason installs it anyway, this gets interfered with. Therefore we want to keep a list of lsps that we don't want Mason to automatically install.
+  local mason_exclude = { 'oxlint' }
+  local ensure_installed = vim.tbl_filter(function(name) return not vim.tbl_contains(mason_exclude, name) end, vim.tbl_keys(servers))
+  -- vim.tbl_keys(servers or {})
+
   vim.list_extend(ensure_installed, {
     -- You can add other tools here that you want Mason to install
   })
