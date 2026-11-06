@@ -734,11 +734,25 @@ do
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
   local servers = {
-    tsc = {
-      root_markers = { 'package.json' },
-      workspace_required = true,
-      settings = {},
+    ts_ls = {
+      filetypes = {
+        'javascript',
+        'javascriptreact',
+        'typescript',
+        'typescriptreact',
+        'vue',
+      },
+      init_options = {
+        plugins = {
+          {
+            name = '@vue/typescript-plugin',
+            location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+            languages = { 'vue' },
+          },
+        },
+      },
     },
+    vue_ls = {},
     oxlint = {},
     html = {},
     emmet_language_server = {},
